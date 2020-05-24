@@ -66,9 +66,9 @@ $('.cancelar').click(function() {
 
 
 	parseFloat(parseFloat($('#total').val( parseFloat($('#total').val()) - (parseFloat($(precioId).val())*parseFloat($(cantidadId).val())) )  )).toFixed(2);
-	if (parseFloat($('#total').val()) < 0) {
+	if (parseFloat($('#total').val()) < 0 || parseFloat($('#total').val()) < 0.1) {
 
-		parseFloat($('#total').val(0));
+		parseFloat($('#total').val(0)).toFixed(2);
 
 
 
@@ -102,13 +102,13 @@ $('.cancelar').click(function() {
 	}
 	
 	$(cantidadId).val(1);
-	$('#listaTotal').html($('#total').val());
+	$('#listaTotal').html(parseFloat($('#total').val()).toFixed(2));
 
 	// productos = productos.filter(function(producto) {
 	// 	return producto.brand != $(prodNombre).val(); 
 	// });
 
-	console.log(parseFloat($('#total').val()));
+	console.log(parseFloat($('#total').val()).toFixed(2));
 });
 
 

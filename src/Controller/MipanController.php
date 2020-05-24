@@ -17,7 +17,19 @@ use Unirest\Request;
 class MipanController extends AbstractController
 {
 
+	// ERRORES
+	public function error404NotFound()
+	{
+		$params = array(
 
+			'error' => ''		
+		);
+
+		return $this->render('mipan/exceptions/error404NotFound.html.twig', $params);
+	}
+
+
+	// ---------
 
 
 	public function inicio()

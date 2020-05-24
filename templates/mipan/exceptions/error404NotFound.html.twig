@@ -1,0 +1,22 @@
+{# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
+{% extends 'baseException.html.twig' %}
+
+{% block body %}
+<div id="notfound">
+	<div class="notfound-bg"></div>
+	<div class="notfound">
+		<h4>MiPan informa:</h4>
+		<hr>
+		<div class="notfound-404">
+			<h1>404</h1>
+		</div>
+		<h2>Lo sentimos, pero esta página no está disponible.</h2>
+		<a href="{{ path('app_mipan_inicio') }}" class="home-btn">Volver al inicio</a>
+		<div class="notfound-social">
+			
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}

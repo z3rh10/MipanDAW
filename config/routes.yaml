@@ -1,3 +1,19 @@
+#PAGINAS DE ERROR
+
+#ERROR404
+app_mipan_error404NotFound:
+    path: /error404NotFound
+    controller: App\Controller\MipanController::error404NotFound
+
+
+
+
+
+
+
+
+
+
 app_mipan_inicio0:
     path: /
     controller: App\Controller\MipanController::inicio
