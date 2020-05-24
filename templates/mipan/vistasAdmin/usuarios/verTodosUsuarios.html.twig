@@ -1,0 +1,252 @@
+{% extends 'mipan/inicioAdmin.html.twig' %}
+
+{% block gestion %}
+
+<div class="container">
+
+	{{ "now"|date("Y-m-d") }}
+	
+	<br><br>
+
+	<section class="p-0 mb-5">
+		
+		
+		<div class="container-fluid p-0">
+			
+			<ul class="nav nav-tabs" role="tablist" id="myTab">
+				
+				<li class="nav-item">
+					<a class="nav-link active" id="listadoTrabajador-tab" data-toggle="tab" href="#listadoTrabajador" role="tab" aria-controls="listadoTrabajador" aria-selected="true">Trabajadores <i class="fas fa-briefcase"></i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="listadoCliente-tab" data-toggle="tab" href="#listadoCliente" role="tab" aria-controls="listadoCliente" aria-selected="true">Clientes <i class="fas fa-user"></i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="listadoBusqueda-tab" data-toggle="tab" href="#listadoBusqueda" role="tab" aria-controls="listadoBusqueda" aria-selected="true">Buscar <i class="fas fa-search"></i></a>
+				</li>
+
+				
+
+			</ul>
+			<br>
+
+			<div class="tab-content" id="myTabContent">
+
+				<div class="tab-pane fade show active" id="listadoTrabajador" role="tabpanel" aria-labelledby="listadoTrabajador-tab">
+
+					{% for trabajador in trabajadores %}
+
+
+					
+					<div class="panel-heading pb-2 pt-2 text-white" style="background-color: black;">
+						<span class="ml-2">Trabajador: {{ trabajador.nombre }} {{ trabajador.apellidos }} <a href="{{ path('app_mipan_editarTrabajadorAdmin', {'dni': trabajador.dni}) }}"><b>[Click para editar] <i class="fas fa-edit"></i></b></a></span>
+					</div>
+					<ul class="list-group">
+						<li class="list-group-item">
+							<div>
+								<h3 class="titles-clie text-center">Datos de {{ trabajador.nombre }}</h3>
+							</div>
+							
+							<div class="col-sm-6">
+
+								<div class="card">
+
+									<div class="card-body">
+										<br>
+										<h4>Panaderia: {{ trabajador.panaderia }}</h4>
+										<h4>Especialidad: {{ trabajador.especialidad }}</h4>
+										<h4>DNI: {{ trabajador.dni }}</h4>
+										<h4>Email: {{ trabajador.email }}</h4>
+										<h4>Teléfono: {{ trabajador.telefono }}</h4>
+										<h4>Usuario: {{ trabajador.usuario }}</h4>
+
+										<br>
+									</div>
+								</div>
+							</div>
+							<br>
+
+
+						</li>
+					</ul>
+					<hr>
+
+
+					{% endfor %}
+
+					
+				</div>
+
+
+
+
+				<div class="tab-pane fade" id="listadoCliente" role="tabpanel" aria-labelledby="listadoCliente-tab">
+					
+
+					{% for cliente in clientes %}
+
+
+
+					<div class="panel-heading pb-2 pt-2 text-white" style="background-color: black;">
+						<span class="ml-2">Cliente: {{ cliente.nombre }} {{ cliente.apellidos }} <a href="{{ path('app_mipan_editarClienteAdmin', {'usuario': cliente.usuario }) }}"><b>[Click para editar] <i class="fas fa-edit"></i></b></a></span>
+					</div>
+					<ul class="list-group">
+						<li class="list-group-item">
+							<div>
+								<h3 class="titles-clie text-center">Datos de {{ cliente.nombre }}</h3>
+							</div>
+
+							<div class="col-sm-6">
+
+								<div class="card">
+
+									<div class="card-body">
+										<br>
+										<h4>DNI: {{ cliente.dni }}</h4>
+										<h4>Código Postal: {{ cliente.codigoPostal }}</h4>
+										<h4>Dirección: {{ cliente.direccion }}</h4>
+										<h4>Teléfono: {{ cliente.telefono }}</h4>
+										<h4>Usuario: {{ cliente.usuario }}</h4>
+
+										<br>
+									</div>
+								</div>
+							</div>
+							<br>
+
+
+						</li>
+					</ul>
+					<hr>
+
+
+					{% endfor %}
+
+
+				</div>
+
+
+
+
+				<div class="tab-pane fade" id="listadoBusqueda" role="tabpanel" aria-labelledby="listadoBusqueda-tab">
+					<div class="container">
+						<div class="row">
+
+							<div class="col-sm-6">
+								<br>
+								<h3>Búsqueda Trabajadores</h3>
+								<form name="formBusqueda" action="{{ path('app_mipan_buscarTrabajadorPorPanaderia')}}" method="POST">
+									<i>*(Puedes utilizar '%' como ayuda)</i>
+									<table>
+										<tr>
+											<td style="color: black;">
+												<b>Panaderia: </b>
+												<input type="text" name="panaderia" value="" required >
+											</td>
+
+
+										</tr>
+										<tr>
+											<td><input type="submit" class="btn btn-primary" value="Buscar por Panaderia"></td>
+										</tr>
+									</table>
+
+								</form>
+								<br>
+								<form name="formBusqueda" action="{{ path('app_mipan_buscarTrabajadorPorEspecialidad')}}" method="POST">
+									
+									<table>
+										<tr>
+											<td style="color: black;">
+												<b>Especialidad: </b>
+												<select id="tipo" name="especialidad" required>
+													<option value="JEFE">JEFE</option>
+													<option value="MAESTRO_DE_PALA">MAESTRO DE PALA</option>
+													<option value="OFICIAL_DE_MESA">OFICIAL DE MESA</option>
+													<option value="OFICIAL_DE_MASA">OFICIAL DE MASA</option>
+													<option value="AYUDANTE">AYUDANTE</option>
+													<option value="APRENDIZ">APRENDIZ</option>
+													<option value="DEPENDIENTE">DEPENDIENTE</option>
+													<option value="REPARTIDOR">REPARTIDOR</option>
+												</select>
+											</td>
+
+
+										</tr>
+										<tr>
+											<td><input type="submit" class="btn btn-primary" value="Buscar por Especialidad"></td>
+										</tr>
+									</table>
+
+								</form>
+							</div>
+
+
+							<div class="col-sm-6">
+								<br>
+								<h3>Búsqueda Clientes</h3>
+								<form name="formBusqueda" action="{{ path('app_mipan_buscarClientePorCodigoPostal')}}" method="POST">
+
+									<table>
+										<tr>
+											<td style="color: black;">
+												<b>C.P. Ciudad/Pueblo: </b>
+												<input type="number" maxlength="5" name="codigoPostal" value="" required >
+											</td>
+
+
+										</tr>
+										<tr>
+											<td><input type="submit" class="btn btn-primary" value="Buscar por Código Postal"></td>
+										</tr>
+									</table>
+
+								</form>
+								<br>
+								<form name="formBusqueda" action="{{ path('app_mipan_buscarClientePorUsuario')}}" method="POST">
+									<i>*(Puedes utilizar '%' como ayuda)</i>
+									<table>
+										<tr>
+											<td style="color: black;">
+												<b>Usuario: </b>
+												<input type="text" name="usuario" value="" required >
+											</td>
+
+
+										</tr>
+										<tr>
+											<td><input type="submit" class="btn btn-primary" value="Buscar por Usuario"></td>
+										</tr>
+									</table>
+
+								</form>
+							</div>
+
+
+
+						</div>
+					</div>
+					<br>
+					<hr>
+
+					<h3>Resultados: </h3>
+
+					{% if resultadoT %}
+					{% include 'mipan/vistasAdmin/usuarios/tablaTrabajadores.html.twig' with {'trabajadores': resultadoT} %}
+					{% elseif resultadoC %}
+					{% include 'mipan/vistasAdmin/usuarios/tablaClientes.html.twig' with {'clientes': resultadoC} %}
+					{% endif %}
+
+					<h4 style="color:red;">-{{ mensaje }}-</h4>
+
+
+				</div>
+
+
+
+			</div>
+		</div>
+	</section>
+
+</div>
+{% endblock %}

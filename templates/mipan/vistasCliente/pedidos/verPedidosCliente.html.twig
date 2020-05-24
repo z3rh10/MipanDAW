@@ -1,0 +1,65 @@
+{% extends 'mipan/inicioClientes.html.twig' %}
+
+{% block navegacion %}
+
+{% if app.session.get('Conectado') %}
+
+<div class="container">
+	<h2>PEDIDOS</h2>
+	<br>
+	<h3>{{ mensaje }}</h3>
+	<hr>
+	<div class="container">
+
+		<section class="p-0 mb-5">
+			<div class="container-fluid p-0">
+
+
+				{% for pedido in pedidos %}
+				{% if pedido.cliente == app.session.get('Conectado') %}
+				
+
+				<div class="panel-heading pb-2 pt-2 text-white" style="background-color: black;">
+					<span class="ml-2">Pedido: {{ pedido.id }}</span>
+				</div>
+				<ul class="list-group">
+					<li class="list-group-item titles-clie">
+						<h5>Panaderia: {{ pedido.panaderia }}</h5>
+						<h5>Fecha de Pedido: {{ pedido.fechaPedido }}</h5>
+						<h5>Cliente: {{ pedido.cliente }}</h5>
+						<h5>Dirección: {{ pedido.direccionCliente }}</h5>
+						<h5>Producto: {{ pedido.producto }}</h5>
+						<h5>Cantidad: {{ pedido.cantidad }}</h5>
+						<h5>Importe: {{ pedido.importe }}</h5>
+						<hr>
+						<h5>Estado del Pedido(Pendiente): {{ pedido.pendiente }}</h5>
+						<h5>Estado del Pedido(En curso): {{ pedido.enCurso }}</h5>
+						<h5>Estado del Pedido(Finalizado): {{ pedido.pagado }}</h5>
+
+					</li>
+				</ul>
+				<hr>
+
+
+				{% endif %}
+				{% endfor %}
+			</div>
+
+		</div>
+	</div>
+</section>
+
+</div>
+
+
+
+
+</div>
+
+{% else %}
+
+<h3 style="color:red;" class="text-right">Aceso Denegado</h3>
+
+{% endif %}
+
+{% endblock %}

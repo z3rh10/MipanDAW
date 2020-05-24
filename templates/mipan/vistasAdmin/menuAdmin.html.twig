@@ -1,0 +1,43 @@
+{% extends 'mipan/inicioAdmin.html.twig' %}
+
+{% block gestion %}
+
+
+<div class="container">
+
+	<section class="p-0 mb-5" id="portfolio">
+		<div class="container-fluid p-0">
+			<div class="row no-gutters popup-gallery">
+
+
+				<div class="col-lg-6 col-sm-4 p-2">
+					<a class="portfolio-box" href="{{ path('app_mipan_verTodasPanaderias') }}">
+						<img class="img-fluid" src="{{ asset('/img/apartados/panaderia.png') }}" alt="">
+						<div class="portfolio-box-caption">
+							<div class="portfolio-box-caption-content">
+								
+							</div>
+						</div>
+					</a>
+				</div>
+				
+				
+				<div class="col-lg-6 col-sm-4 p-2">
+					<a class="portfolio-box" href="{{ path('app_mipan_verTodosUsuarios') }}">
+						<img class="img-fluid" src="{{ asset('/img/apartados/empleados.png') }}" alt="">
+						<div class="portfolio-box-caption">
+							<div class="portfolio-box-caption-content">
+								
+							</div>
+						</div>
+					</a>
+				</div>
+				
+				
+				
+			</div>
+		</div>
+	</section>
+
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+<i>Listado de Trabajadores:</i>
+<br><br>
+<table>
+  
+  {% for trabajador in trabajadores %}
+
+  <div class="panel-heading pb-2 pt-2 text-white" style="background-color: black;">
+    <span class="ml-2">Trabajador: {{ trabajador.nombre }} {{ trabajador.apellidos }} <a href="{{ path('app_mipan_editarTrabajadorAdmin', {'nombre': trabajador.dni}) }}"><b>[Click para editar] <i class="fas fa-edit"></i></b></a></span>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <div>
+        <h3 class="titles-clie text-center">Datos de {{ trabajador.nombre }}</h3>
+      </div>
+
+      <div class="col-sm-6">
+
+        <div class="card">
+
+          <div class="card-body">
+            <br>
+            <h4>Panaderia: {{ trabajador.panaderia }}</h4>
+            <h4>Especialidad: {{ trabajador.especialidad }}</h4>
+            <h4>DNI: {{ trabajador.dni }}</h4>
+            <h4>Email: {{ trabajador.email }}</h4>
+            <h4>Teléfono: {{ trabajador.telefono }}</h4>
+            <h4>Usuario: {{ trabajador.usuario }}</h4>
+
+            <br>
+          </div>
+        </div>
+      </div>
+      <br>
+
+
+    </li>
+  </ul>
+  <hr>
+
+
+  {% endfor %}
+
+</table>

@@ -1,0 +1,27 @@
+{% extends 'mipan/inicioJefes.html.twig' %}
+
+{% block gestion %}
+
+<h2>Datos del Producto</h2>
+<br>
+<b>| <a href="{{ path('app_mipan_editarProductosJefes', {'id': producto.id}) }}">EDITAR DATOS DEL PRODUCTOS</a></b>
+<hr>
+<h3><img src="/img/productos/{{ producto.imagen }}" style="width:400px; height:9em;"></h3>
+<hr>
+<h2>Nombre</h2>
+<h3>{{ producto.nombre }}</h3>
+<hr>
+<h2>Precio</h2>
+<h3>{{ producto.precio }} €</h3>
+<hr>
+<h2>Unidades disponibles</h2>
+<h3>{{ producto.cantidad }}</h3>
+<hr>
+<h2>Descripción</h2>
+<h3>{{ producto.descripcion }}</h3>
+
+
+
+</br>
+
+{% endblock %}

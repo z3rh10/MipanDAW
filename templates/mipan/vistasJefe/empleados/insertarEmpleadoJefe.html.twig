@@ -1,0 +1,74 @@
+{% extends 'mipan/inicioJefes.html.twig' %}
+
+{% block gestion %}
+
+
+{% if app.session.get('Conectado') %}
+
+<h4 style="color: red;">{{ mensaje }}</h4>
+
+<form name="formInsertar" action="{{ path('app_mipan_insertarEmpleadoJefes') }}" method="POST">
+ <table>
+
+  <tr>
+    <td>Panaderia</td>
+    <td><input type="text" name="panaderia" value="{{ app.session.get('Panaderia') }}" required readonly /></td> 
+  </tr>
+  <tr>
+    <td>DNI</td>
+    <td><input type="text" name="dni" value="" required /></td>
+  </tr>
+  <tr>
+    <td>Nombre</td>
+    <td><input type="text" name="nombre" value="" required /></td>
+  </tr>
+  <tr>            
+    <td>Apellidos</td>
+    <td><input type="text" name="apellidos" value="" required /></td> 
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><input type="email" name="email" value="" required /></td>
+  </tr>
+  <tr>
+    <td>Telefono</td>
+    <td><input type="number" name="telefono" value="" required /></td>
+  </tr>
+  
+  <tr>
+    <td>Usuario</td>
+    <td><input type="text" name="usuario" value="" required /></td>
+  </tr>
+  <tr>
+    <td>Contraseña</td>
+    <td><input type="password" name="pass" value="" required /></td>
+  </tr>
+  <tr>
+    <td>ESPECIALIDAD</td>
+    <td>
+      <select id="tipo" name="especialidad" required>
+        <option value="MAESTRO_DE_PALA">MAESTRO DE PALA</option>
+          <option value="OFICIAL_DE_MESA">OFICIAL DE MESA</option>
+          <option value="OFICIAL_DE_MASA">OFICIAL DE MASA</option>
+        <option value="AYUDANTE">AYUDANTE</option>
+        <option value="APRENDIZ">APRENDIZ</option>
+        <option value="DEPENDIENTE">DEPENDIENTE</option>
+        <option value="REPARTIDOR">REPARTIDOR</option>
+      </select>
+    </td>
+  </tr>
+</table>
+
+<br>
+<input type="submit" value="Insertar" name="insertar" />
+</form>
+
+
+{% else %}
+
+<br><br>
+<h1 style="color:red">Acceso Denegado a la función: 'Insertar'</h1>
+
+{% endif %}
+
+{% endblock %}

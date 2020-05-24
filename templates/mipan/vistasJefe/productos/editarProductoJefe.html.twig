@@ -1,0 +1,93 @@
+{% extends 'mipan/inicioJefes.html.twig' %}
+
+{% block gestion %}
+
+{% if app.session.get('Conectado') %}
+
+<h2>Editar Producto</h2>
+
+<a style="color:red;" href="#" id="bt_delete" data-toggle="modal" data-target="#infoBorrar">
+
+	<b>[Click para eliminar] 
+		<i class="fas fa-trash">
+		</i>
+	</b>
+</a>
+<br>
+
+<!-- Modal2 -->
+<div class="modal fade" id="infoBorrar" tabindex="-1" role="dialog" aria-labelledby="infoBorrar" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+
+
+
+		<div class="modal-content">
+
+			<form action="{{ path('app_mipan_borrarProductoJefes', {'id': producto.id}) }}" method="POST" id="formBorradoProducto" name="formBorradoProducto">
+
+				<div class="modal-header">
+					<h3 class="modal-title titles-clie">Confirmar Borrado 
+						<i class="fas fa-trash">
+						</i>
+					</h3>
+				</div>
+				<div class="modal-body">
+
+					<h4>El Producto : <u>{{ producto.nombre }}</u>, será eliminado definitivamente.</h4>
+					<h4>¿Desea continuar con ésta operación?</h4>
+
+				</div>
+				<div class="modal-footer">
+
+					<button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelarBorrar" value="">Cancelar</button>
+
+					<button type="button" class="btn btn-primary" id="confirmarBorradoProducto" name="confirmarBorradoProducto">
+						Confirmar
+					</button>
+
+				</div>
+
+			</form>
+		</div>
+
+	</div>
+</div>
+
+<br>
+<h3 style="color:red;" class="text-right">{{mensaje}}</h3>
+
+<form name="formEditar" action="" method="POST">
+	<table>
+		<tr>
+			<td></td> <td><input type="hidden" name="id" readonly value="{{ producto.id }}" required readonly /></td> </tr>
+			<tr>
+				<td></td><td><input type="hidden" name="panaderia" value="{{ producto.panaderia }}" required readonly /></td> </tr>
+				<tr>
+					<td>Nombre</td> <td><input type="text" name="nombre" value="{{ producto.nombre }}" required /></td> </tr>
+					<tr>
+						<td>Precio</td><td><input type="number" step="any" name="precio" value="{{ producto.precio }}" required /> €</td> </tr>
+						<tr>
+							<td>Imagen</td><td><img src="/img/productos/{{ producto.imagen }}" style="" ></td> </tr>
+							<tr> <td><input type="file" name="imagen" value="{{ producto.imagen }}" /></td> </tr>
+							<tr> <td><input type="hidden" name="imagen2" value="{{ producto.imagen }}" /></td> </tr>
+
+							<tr>
+								<td>Descripcion</td><td><input type="text" name="descripcion" value="{{ producto.descripcion }}" required /> €</td> </tr>
+								<tr>
+									<td>Unidades Disponibles</td><td><input type="number" name="cantidad" value="{{ producto.cantidad }}" required /> u</td> </tr>
+
+								</table>
+								<input type="submit" value="Editar" name="editar" />
+							</form>
+
+							{% else %}
+
+							<br><br>
+							<h1 style="color:red">Acceso Denegado a la función: 'Editar'</h1>
+
+							{% endif %}
+
+
+
+							{% endblock %}
+

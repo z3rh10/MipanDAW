@@ -1,0 +1,190 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<div id="cabecera">
+	
+	<br>
+	<div class="display-none">
+		<nav class="navbar navbar-expand-xl py-0 navbar-light nav-top">
+
+			{% if app.session.get('Conectado') %}
+
+			<a class="navbar-brand" href="/inicioRepartidor"><img src="{{ asset('/img/logo.jpg') }}" alt="Logo" class="logo"></a>
+
+			{% else %}
+
+			<a class="navbar-brand" href="/inicio"><img src="{{ asset('/img/logo.jpg') }}" alt="Logo" class="logo"></a>
+
+			{% endif %}
+
+			<div class="navbar-collapse flex-md-column" id="navbarNav">
+
+				{% if app.session.get('Conectado') %}
+
+				<h3 class="nomUsu">PANADERIA: {{ app.session.get('Panaderia') }}</h3>
+				<h3 class="nomUsu"><a href="#">- {{ app.session.get('Conectado') }} -</a></h3>
+				
+				
+
+				{% else %}
+
+				<ul class="navbar-nav nav-row flex-xl-row flex-column" id="nav-top">
+					<li class="nav-item2 py-0 p-2" data-toggle="modal" data-target="#modalLogin">
+						<a class="nav-link py-0" href="#">
+							<img class="img-fluid thumb-img" src="{{ asset('/img/inicioSesion.jpg') }}" alt="Iniciar Sesión" title="Iniciar Sesión">
+							
+						</a>
+					</li>
+					
+				</ul>
+
+				{% endif %}
+			</div>
+		</nav>
+	</div>
+
+	<!-- HIDDEN LOGIN MODAL -->
+	<div class="modal hide fade" id="modalLogin">
+
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<h2>Inicio de Sesión</h2>
+
+				</div>
+
+				<div class="modal-body">
+
+
+					<div class="container-fluid p-0">
+
+						<ul class="nav nav-tabs" role="tablist" id="myTab">
+							<li class="nav-item">
+								<a class="nav-link active" id="InicioSesion-tab" data-toggle="tab" href="#InicioSesion" role="tab" aria-controls="InicioSesion" aria-selected="true">Inicio Sesión</a>
+							</li>
+						</ul>
+						<br>
+
+						<div class="tab-content" id="myTabContent">
+
+
+							<div class="tab-pane fade show active" id="InicioSesion" role="tabpanel" aria-labelledby="InicioSesion-tab">
+
+
+								<form action="{{ path('app_mipan_inicioSesion') }}" method="POST">
+									<div class="form-group">
+										
+										<label for="inputUsuario"><strong>Usuario</strong></label>
+										<input  name="usuarioI" type="text" class="form-control" id="inputUsuario" placeholder="Escribe tu usuario" required>
+
+									</div>
+
+									<div class="form-group">
+										<label for="inputPassword"><strong>Contraseña</strong></label>
+										<input  name="passI" type="password" class="form-control" id="inputPassword" placeholder="Escribe tu contraseña" required>
+									</div>
+									<button type="submit" class="btn btn-success btn-block">Iniciar sesión</button>
+								</form>
+								
+
+
+							</div>
+
+
+							<br>
+						</div>
+					</div>
+
+
+
+
+
+
+					
+				</div><!--Modal-body-->
+				<div class="modal-footer">
+					<p><a href="">¿Has olvidado la contraseña?</a></p>
+				</div><!--Modal-footer-->
+			</div>
+		</div>
+	</div>
+
+	
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="menu">
+</div>
+
+<br>
+
+<div id="contenido" class="container-fluid pt-5">
+
+	{% block contenido %}
+
+	{% endblock %}
+
+</div>
+
+
+
+
+
+
+{% block stylesheets %}
+
+<link href="{{ asset('/css/estilo.css') }}" type="text/css" rel="stylesheet">
+<link href="{{ asset('/css/estiloInicioJefes.css') }}" type="text/css" rel="stylesheet">
+
+<link href="{{ asset('/css/bootstrap/bootstrap.min.css') }}" type="text/css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+
+<!-- Bootstrap core CSS -->
+<link href="{{ asset('/css/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+<link href="{{ asset('/css/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="{{ asset('/css/resume.min.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block javascripts %}
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="{{ asset('/js/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('/js/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+<!-- Plugin JavaScript -->
+<script src="{{ asset('/js/jquery-easing/jquery.easing.min.js') }}"></script>
+
+<!-- Custom scripts for this template -->
+<script src="{{ asset('/js/resume.min.js') }} "></script>
+
+{% endblock %}
+
+{% endblock %}

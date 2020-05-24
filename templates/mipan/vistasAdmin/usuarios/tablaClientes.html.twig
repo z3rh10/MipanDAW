@@ -1,0 +1,42 @@
+<i>Listado de Clientes:</i>
+<br><br>
+<table>
+
+  {% for cliente in clientes %}
+
+  <div class="panel-heading pb-2 pt-2 text-white" style="background-color: black;">
+    <span class="ml-2">Cliente: {{ cliente.nombre }} {{ cliente.apellidos }} <a href="{{ path('app_mipan_editarClienteAdmin', {'dni': cliente.dni}) }}"><b>[Click para editar] <i class="fas fa-edit"></i></b></a></span>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <div>
+        <h3 class="titles-clie text-center">Datos de {{ cliente.nombre }}</h3>
+      </div>
+
+      <div class="col-sm-6">
+
+        <div class="card">
+
+          <div class="card-body">
+            <br>
+            <h4>DNI: {{ cliente.dni }}</h4>
+            <h4>Código Postal: {{ cliente.codigoPostal }}</h4>
+            <h4>Dirección: {{ cliente.direccion }}</h4>
+            <h4>Teléfono: {{ cliente.telefono }}</h4>
+            <h4>Usuario: {{ cliente.usuario }}</h4>
+
+            <br>
+          </div>
+        </div>
+      </div>
+      <br>
+
+
+    </li>
+  </ul>
+  <hr>
+
+
+  {% endfor %}
+
+</table>

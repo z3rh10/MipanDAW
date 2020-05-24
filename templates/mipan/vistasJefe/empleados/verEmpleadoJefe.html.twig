@@ -1,0 +1,35 @@
+{% extends 'mipan/inicioJefes.html.twig' %}
+
+{% block gestion %}
+
+<h2>Datos de: {{ empleado.nombre }} {{ empleado.apellidos }}</h2>
+<br>
+<hr>
+<h2>DNI</h2>
+<h3>{{ empleado.dni }}</h3>
+<hr>
+<h2>Nombre</h2>
+<h3>{{ empleado.nombre }}</h3>
+<hr>
+<h2>Apellidos</h2>
+<h3>{{ empleado.apellidos }}</h3>
+<hr>
+<h2>Especialidad</h2>
+<h3>{{ empleado.especialidad }}</h3>
+<hr>
+<h2>Email</h2>
+<h3>{{ empleado.email }}</h3>
+<hr>
+<h2>Teléfono</h2>
+<h3>{{ empleado.telefono }}</h3>
+<hr>
+<h2>Usuario</h2>
+<h3>{{ empleado.usuario }}</h3>
+<hr>
+
+
+
+
+</br>
+
+{% endblock %}

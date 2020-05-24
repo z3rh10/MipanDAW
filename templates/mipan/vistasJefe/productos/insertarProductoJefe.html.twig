@@ -1,0 +1,50 @@
+{% extends 'mipan/inicioJefes.html.twig' %}
+
+{% block gestion %}
+
+
+{% if app.session.get('Conectado') %}
+
+<h4 style="color: red;">{{ mensaje }}</h4>
+
+<form name="formInsertar" action="{{ path('app_mipan_insertarProductosJefes') }}" method="POST">
+ <table>
+
+  <tr>
+    <td>Panaderia</td>
+    <td><input type="text" name="panaderia" value="{{ app.session.get('Panaderia') }}" required readonly /></td> 
+  </tr>
+  <tr>
+    <td>Nombre</td>
+    <td><input type="text" name="nombre" value="" required /></td>
+  </tr>
+  <tr>
+    <td>Imagen</td>
+    <td><input type="file" name="imagen" required /></td>
+  </tr>
+  <tr>            
+    <td>Descripción</td>
+    <td><input type="text" name="descripcion" value="" required /></td> 
+  </tr>
+  <tr>
+    <td>Precio (€)</td>
+    <td><input type="number" name="precio" value="" step="any" required /></td>
+  </tr>
+  <tr>
+    <td>Cantidad (u)</td><td><input type="number" name="cantidad" value="" required /></td>
+  </tr>
+
+
+</table>
+<input type="submit" value="Insertar" name="insertar" />
+</form>
+
+
+{% else %}
+
+<br><br>
+<h1 style="color:red">Acceso Denegado a la función: 'Insertar'</h1>
+
+{% endif %}
+
+{% endblock %}

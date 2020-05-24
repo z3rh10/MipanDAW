@@ -1,0 +1,25 @@
+{% extends 'mipan/inicioAdmin.html.twig' %}
+
+{% block gestion %}
+
+{% if app.session.get('Conectado') %}
+	
+<table>
+	<br><br>
+	<tr>
+		<td>Borrado correctamente.</td>
+		<th>  |  </th>
+		<td><a href="{{ path('app_mipan_verTodosUsuarios') }}">Volver a la lista de Usuarios</a></td>
+	</tr>
+
+
+</table>
+
+{% else %}
+
+<br><br>
+<h1 style="color:red">Acceso Denegado a la función: 'Borrar'</h1>
+
+{% endif %}
+
+{% endblock %}

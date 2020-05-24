@@ -1,0 +1,108 @@
+{% extends 'mipan/inicioAdmin.html.twig' %}
+
+{% block gestion %}
+
+{% if app.session.get('Conectado') %}
+
+<h2>Editar Datos de Cliente</h2>
+
+<a style="color:red;" href="#" id="bt_delete" data-toggle="modal" data-target="#infoBorrar">
+
+	<b>[Click para eliminar] 
+		<i class="fas fa-trash">
+		</i>
+	</b>
+</a>
+<br>
+
+<!-- Modal2 -->
+<div class="modal fade" id="infoBorrar" tabindex="-1" role="dialog" aria-labelledby="infoBorrar" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+
+
+
+		<div class="modal-content">
+
+			<form action="{{ path('app_mipan_borrarClienteAdmin', {'usu': perfil.usuario}) }}" method="POST" id="formBorradoCliente" name="formBorradoCliente">
+
+				<div class="modal-header">
+					<h3 class="modal-title titles-clie">Confirmar Borrado 
+						<i class="fas fa-trash">
+						</i>
+					</h3>
+				</div>
+				<div class="modal-body">
+
+					<h4>El/La Cliente : <u>{{ perfil.nombre }} {{ perfil.apellidos }}</u>, será eliminado/a definitivamente.</h4>
+					<h4>¿Desea continuar con ésta operación?</h4>
+
+				</div>
+				<div class="modal-footer">
+
+					<button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelarBorrar" value="">Cancelar</button>
+
+					<button type="button" class="btn btn-primary" id="confirmarBorradoCliente" name="confirmarBorradoCliente">
+						Confirmar
+					</button>
+
+				</div>
+
+			</form>
+		</div>
+
+	</div>
+</div>
+
+<br>
+<h3 style="color:red;" class="text-right">{{mensaje}}</h3>
+
+<form name="formEditar" action="" method="POST">
+	<table>
+
+		<tr>
+			<td>DNI</td>
+			<td><input type="text" name="dni" value="{{ perfil.dni }}" required readonly /></td>
+		</tr> 
+		<tr>
+			<td>Nombre</td>
+			<td><input type="text" name="nombre" value="{{ perfil.nombre }}" required /></td>
+		</tr> 
+		<tr>
+			<td>Apellidos</td>
+			<td><input type="text" name="apellidos" value="{{ perfil.apellidos }}" required /></td>
+		</tr>
+		<tr>
+			<tr>            
+				<td>Telefono</td>
+				<td><input type="number" name="telefono" value="{{ perfil.telefono }}" required /></td> 
+			</tr>
+			<tr>
+				<td>Código Postal</td>
+				<td><input type="text" name="codigoPostal" value="{{ perfil.codigoPostal }}" min="5" max="5" size="5" required /></td>
+			</tr>
+			<tr>
+				<td>Dirección</td>
+				<td><input type="text" name="direccion" value="{{ perfil.direccion }}" required /></td>
+			</tr>
+			<hr>
+			<tr>            
+				<td>Contraseña</td>
+				<td><input type="password" name="pass" value="{{ perfil.pass }}" required /></td> 
+			</tr>
+
+
+		</table>
+		<input type="submit" value="Editar" name="editar" />
+	</form>
+
+	{% else %}
+
+	<br><br>
+	<h1 style="color:red">Acceso Denegado a la función: 'Editar'</h1>
+
+	{% endif %}
+
+
+
+	{% endblock %}
+

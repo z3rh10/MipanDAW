@@ -1,0 +1,55 @@
+{% extends 'mipan/inicioJefes.html.twig' %}
+
+{% block gestion %}
+
+{% if app.session.get('Conectado') %}
+
+<div class="container">
+	<h2>EMPLEADOS</h2>
+	<br>
+	<b>| <a href="/insertarEmpleadoJefes">AÑADIR NUEVO EMPLEADO</a></b>
+	<hr>
+	<div class="container">
+
+		<section class="p-0 mb-5" id="portfolio">
+			<div class="container-fluid p-0">
+				<div class="row no-gutters popup-gallery">
+
+					{% for empleado in empleados %}
+					{% if empleado.panaderia == app.session.get('Panaderia') %}	
+					{% if empleado.especialidad != 'JEFE' %}
+
+
+					<div class="col-lg-4 col-sm-6 p-2" id="listaEmpleados">
+						<h5>ESPECIALIDAD: {{ empleado.especialidad }}</h5>
+						<hr>
+						<h5>DNI: {{ empleado.dni }}</h5>
+						<h5>EMPLEADO: {{ empleado.nombre }} {{ empleado.apellidos }} </h5>
+						<b>| <a href="{{ path('app_mipan_verEmpleadoJefes', {'dni': empleado.dni}) }}">VER PERFIL DEL EMPLEADO</a></b>
+						<br>
+						<b>| <a href="{{ path('app_mipan_editarEmpleadoJefes', {'dni': empleado.dni}) }}">EDITAR DATOS DEL EMPLEADO</a></b>
+					</div>
+
+
+					{% endif %}
+					{% endif %}
+					{% endfor %}
+
+				</div>
+			</div>
+		</section>
+
+	</div>
+
+
+
+
+</div>
+
+{% else %}
+
+<h3 style="color:red;" class="text-right">Aceso Denegado</h3>
+
+{% endif %}
+
+{% endblock %}

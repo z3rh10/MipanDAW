@@ -1,0 +1,273 @@
+{% extends 'mipan/inicioClientes.html.twig' %}
+
+{% block navegacion %}
+
+{% if app.session.get('Conectado') %}
+
+<div class="container">
+	
+
+	{% for producto in productos|slice(0, 1) %}
+	<h1 class="titles-clie">Panaderia {{ producto.panaderia }}</h1>
+	{% endfor %}
+
+	<h2 class="titles-clie">PRODUCTOS</h2>
+
+
+	<div>
+		<hr>
+
+		<div style="margin-left: 78.5%;">
+
+			<label class="btn" style="background: linear-gradient(90deg, rgb(254, 180, 52) 80%, rgb(254, 234, 191) 100%);">
+				<a href="#" id="bt_finalizar" data-toggle="modal" data-target="#infoPedido">
+					<div>
+						<img class="img-fluid" src="{{ asset('/img/apartados/finalizarCarrito.png') }}" alt="" style="width:50px; height:50px">
+						<b class="titles-clie">Finalizar compra</b>
+
+					</div>
+				</a>
+				<hr>
+				<b class="titles-clie">Total: <input size="3" type="text" id="total" name="total" value="0" readonly required> €</b>
+			</label>
+
+		</div>	
+
+		<div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+			{% for producto in productos|slice(0, 1) %}
+			<label class="btn btn-dark" onclick="javascript:location.href=' {{ path('app_mipan_verProductosPanaderiaCatalogoClientes', {'panaderia': producto.panaderia}) }} '">
+				<input type="radio" name="options" id="vista" autocomplete="off" > Visualización
+			</label>
+			{% endfor %}
+
+			<label class="btn btn-primary active">
+				<input type="radio" name="options" id="compra" autocomplete="off" checked> <u>Compra</u>
+			</label>
+
+
+		</div>
+
+
+		<br>
+		<b class="">| Cambiar a</b>
+		<br>
+		<b class="ml-2">Visualización</b>
+		<br><br>
+		<i class="material-icons titles-clie">shopping_cart</i><i> Modo Compra </i> 
+		<hr>
+	</div>
+
+	<div class="container">
+		
+
+
+
+		<section class="p-0 mb-5" id="portfolio">
+			<div class="container-fluid p-0">
+				<div class="row no-gutters popup-gallery">
+
+					{% for producto in productos %}
+
+					<div class="col-lg-4 col-sm-6 p-2" id="detallesProducto">
+						<img class="img-fluid" src="/img/productos/{{ producto.imagen }}" alt="" style="height: 195px;">
+						<div class="portfolio-box-caption">
+							<div class="portfolio-box-caption-content">
+								<div class="project-category text-faded">
+									<h3 class="titles-clie pt-2 text-center">{{ producto.nombre }}</h3>
+									<input type="hidden" name="nomProd" class="nomProd{{ producto.id }}" value="{{ producto.nombre }}">
+								</div>
+								<div class="project-name">
+
+								</div>
+							</div>
+						</div>
+						<h2 class="titles-clie text-right"> {{ producto.precio }} € </h2>
+						<p class="text-right"><b >x Unidad</b></p>
+
+						<p class="text-right">
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter{{ producto.id }}">
+								Añadir al Carrito
+							</button>
+
+						</p>
+
+
+						<div class="collapse" id="collapseExample{{ producto.id }}">
+							<div class="card card-body">
+								<h5 class="titles-clie">{{ producto.descripcion }}</h5>
+							</div>
+						</div>
+
+						<!-- Modal1 -->
+
+						<div class="modal fade" id="exampleModalCenter{{ producto.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle{{ producto.id }}" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<form id="formulario" action="{{ producto.id }}">
+
+									<div class="modal-content">
+										<div class="modal-header">
+											<h3 class="modal-title titles-clie" id="exampleModalCenterTitle{{ producto.id }}">Cantidad de: {{ producto.nombre }} <b style="font-size:20px;">(s)</b></h3>
+
+										</div>
+										<div class="modal-body">
+											<input type="hidden" id="id" class="id" value="{{ producto.id }}" required>
+
+											<label class="text-left"><b class="titles-clie" >Precio x Unidad </b></label>
+											<label class="text-center"><b class="" >_________________________</b></label>
+											<label class="text-right"><b class="titles-clie">{{ producto.precio }} €</b></label>
+											<input type="hidden" id="precio{{ producto.id }}" value="{{ producto.precio }}" required>
+											<br>
+
+											<label class="text-left"><b class="titles-clie" >Cantidad </b></label>
+											<label class="text-center"><b class="" >______________________</b></label>
+											<label class="text-right">
+												<input type="number" name="cantidad" id="cantidad{{ producto.id }}" min="1" max="10" value="1" onChange="calculoImporte(this.value, precio{{ producto.id }}.value, importe{{ producto.id }})" class="cantProd{{ producto.id }} limpiar cantidad{{ producto.id }}" required >
+												<b>Máx 10 u.</b>
+											</label>
+											<br>
+
+											<label class="text-left"><b><h3 class="titles-clie">Total </h3></b></label>
+											<label class="text-center"><b class="" >____________________________</b></label>
+											<label class="text-right">
+												<h3 class="titles-clie" >
+													<label name="importe" value=""><input class="limpiar importe{{ producto.id }}" size="3" type="text" id="importe{{ producto.id }}" readonly required value="{{ producto.precio }}"  ></label> €
+												</h3>
+											</label>
+											<br>
+
+
+
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-danger cancelar" data-dismiss="modal" id="cancelar{{ producto.id }}" value="{{ producto.id }}">Cancelar</button>
+
+											<button type="button" class="btn btn-primary confirmar" id="confirmar{{ producto.id }}" data-dismiss="modal" value="{{ producto.id }}">Confirmar</button>
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+
+
+
+						</div>
+
+						{% endfor %}
+
+					</div>
+				</div>
+			</section>
+		</form>
+	</div>
+
+
+
+	<!-- Modal2 -->
+	
+	<div class="modal fade" id="infoPedido" tabindex="-1" role="dialog" aria-labelledby="infoPedido" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+
+			
+			
+			<div class="modal-content">
+
+				<form action="{{ path('app_mipan_nuevoPedidoOnlineClientes') }}" method="POST" id="formPedido" name="formPedido">
+
+					<div class="modal-header">
+						<h3 class="modal-title titles-clie">Confirmar Pedido:</h3>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="card-title">
+									<h4 class="titles-clie">Producto</h4>
+								</div>
+								<div class="card">
+									
+									<div class="card-body">
+										<div id="listaProductos" class="titles-clie">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-sm-6">
+								<div class="card-title">
+									<h4 class="titles-clie">Cantidad</h4>
+								</div>
+								<div class="card">
+									<div class="card-body">
+										<div id="listaCantidades" class="titles-clie">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div>
+							<h3 class="titles-clie text-right">
+								<hr>
+								Total 
+								<div id="listaTotal" class="titles-clie">
+
+								</div>
+
+							</h3>
+
+						</div>
+
+
+					</div>
+					<div class="modal-footer">
+
+						<button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelarPedido" value="">Cancelar</button>
+
+						<button type="button" class="btn btn-primary" id="confirmarPedido" name="confirmarPedido">
+							Confirmar
+						</button>
+
+					</div>
+
+
+					<!-- DATOS ADICIONALES -->
+
+					<input type="hidden" name="cliente" id="cliente" value="{{ app.session.get('Conectado') }}">
+
+					{% for producto in productos|slice(0, 1) %}
+					<input type="hidden" name="panaderia" id="panaderia" value="{{ producto.panaderia }}">
+					{% endfor %}
+					{% for cliente in clientes|slice(0, 1) %}
+					{% if cliente.usuario == app.session.get('Conectado') %}
+					<input type="hidden" name="direccionCliente" id="direccionCliente" value="{{ cliente.direccion }}">
+					{% endif %}
+					{% endfor %}
+					
+					<input type="hidden" name="listaProductos2" id="listaProductos2" value="">
+					<input type="hidden" name="listaCantidades2" id="listaCantidades2" value="">
+					<input type="hidden" name="totalPedido2" id="totalPedido2" value="">
+
+				</form>
+			</div>
+			
+		</div>
+	</div>
+
+
+
+	
+</div>
+
+{% else %}
+
+<h3 style="color:red;" class="text-right">Aceso Denegado</h3>
+
+{% endif %}
+
+
+
+
+
+{% endblock %}

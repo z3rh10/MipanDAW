@@ -1,0 +1,146 @@
+{% extends 'mipan/inicioAdmin.html.twig' %}
+
+{% block gestion %}
+
+<div class="container">
+
+	{{ "now"|date("Y-m-d") }}
+	<h3>{{ mensaje }}</h3>
+
+	<br>
+	<section class="p-0 mb-5">
+		
+		
+		<div class="container-fluid p-0">
+			
+			<ul class="nav nav-tabs" role="tablist" id="myTab">
+				
+				<li class="nav-item">
+					<a class="nav-link active" id="listadoPanaderias-tab" data-toggle="tab" href="#listadoPanaderias" role="tab" aria-controls="listadoPanaderias" aria-selected="true">Panaderias <i class="fas fa-bread-slice"></i></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="listadoPedidosEnCurso-tab" data-toggle="tab" href="#listadoPedidosEnCurso" role="tab" aria-controls="listadoPedidosEnCurso" aria-selected="true">Buscar <i class="fas fa-search"></i></a>
+				</li>
+				
+
+			</ul>
+			<br>
+
+			<div class="tab-content" id="myTabContent">
+
+				<div class="tab-pane fade show active" id="listadoPanaderias" role="tabpanel" aria-labelledby="listadoPanaderias-tab">
+
+					{% for panaderia in panaderias %}
+
+
+					
+					<div class="panel-heading pb-2 pt-2 text-white" style="background-color: black;">
+						<span class="ml-2">Panaderia: {{ panaderia.nombre }} <a href="{{ path('app_mipan_editarPanaderiasAdmin', {'nombre': panaderia.nombre}) }}"><b>[Click para editar] <i class="fas fa-edit"></i></b></a></span>
+					</div>
+					<ul class="list-group">
+						<li class="list-group-item">
+							<div>
+								<h3 class="titles-clie text-center">Datos de {{ panaderia.nombre }}</h3>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+
+									<div class="card">
+
+										<div class="card-body">
+											<br>
+											<h4>Código Postal: {{ panaderia.codigoPostal }}</h4>
+											<h4>Teléfono: {{ panaderia.telefono }}</h4>
+											<h4>Dirección: {{ panaderia.direccion }}</h4>
+											<h4>Horario: {{ panaderia.horario }}</h4>
+
+											<br>
+										</div>
+									</div>
+								</div>
+								<br>
+								<div class="col-sm-6">
+									<div class="card">
+
+										<div class="card-body">
+											<h4>Ubicación: <input type="text" name="ubicacion" value="{{ panaderia.ubicacion }}" readonly></h4>
+											<iframe src="{{ panaderia.ubicacion }}" width="100%" height="145px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+											<br>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</li>
+					</ul>
+					<hr>
+
+
+					{% endfor %}
+
+					
+				</div>
+
+				
+
+				<div class="tab-pane fade" id="listadoPedidosEnCurso" role="tabpanel" aria-labelledby="listadoPedidosEnCurso-tab">
+					<div class="container">
+						<form name="formBusqueda" action="{{ path('app_mipan_buscarPanaderiaPorNombre')}}" method="POST">
+							<i>*(Puedes utilizar '%' como ayuda)</i>
+							<br><br>
+							<table>
+
+								<tr>
+									
+									<td style="color: black;">
+										<b>Nombre Panaderia: </b>
+										<input type="text" name="nombre" value="" required >
+									</td>
+									
+									
+								</tr>
+								<tr>
+									<td><input type="submit" class="btn btn-primary" value="Buscar por Nombre"></td>
+								</tr>
+							</table>
+
+						</form>
+						<br>
+						<form name="formBusqueda" action="{{ path('app_mipan_buscarPanaderiaPorCodigoPostal')}}" method="POST">
+
+							<table>
+								<tr>
+									<td style="color: black;">
+										<b>C.P. Panaderia: </b>
+										<input type="number" maxlength="5" name="codigoPostal" value="" required >
+									</td>
+									
+									
+								</tr>
+								<tr>
+									<td><input type="submit" class="btn btn-primary" value="Buscar por Código Postal"></td>
+								</tr>
+							</table>
+
+						</form>
+					</div>
+					<br>
+
+					<h3>Resultados: </h3>
+
+					{% if resultado %}
+					{% include 'mipan/vistasAdmin/panaderias/tablaPanaderia.html.twig' with {'panaderias': resultado} %}
+					{% endif %}
+
+
+				</div>
+
+
+
+			</div>
+		</div>
+	</section>
+
+</div>
+{% endblock %}

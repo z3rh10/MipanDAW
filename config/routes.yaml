@@ -1,0 +1,278 @@
+app_mipan_inicio0:
+    path: /
+    controller: App\Controller\MipanController::inicio
+app_mipan_inicio:
+    path: /inicio
+    controller: App\Controller\MipanController::inicio
+
+
+
+app_mipan_inicioSesion:
+    path: /inicioSesion
+    controller: App\Controller\MipanController::inicioSesion
+
+app_mipan_cerrarSesion:
+    path: /cerrarSesion
+    controller: App\Controller\MipanController::cerrarSesion
+
+
+
+
+app_mipan_inicioAdmin:
+    path: /inicioAdmin
+    controller: App\Controller\MipanController::inicioAdmin
+
+app_mipan_verTodasPanaderias:
+    path: /verTodasPanaderias
+    controller: App\Controller\MipanController::verTodasPanaderias
+
+app_mipan_editarPanaderiasAdmin:
+    path: /editarPanaderiasAdmin
+    controller: App\Controller\MipanController::editarPanaderiaAdmin
+
+app_mipan_buscarPanaderiaPorNombre:
+    path: /buscarPanaderiaPorNombre
+    controller: App\Controller\MipanController::buscarPanaderiaPorNombre
+
+app_mipan_buscarPanaderiaPorCodigoPostal:
+    path: /buscarPanaderiaPorCodigoPostal
+    controller: App\Controller\MipanController::buscarPanaderiaPorCodigoPostal
+
+
+
+app_mipan_verTodosUsuarios:
+    path: /verTodosUsuarios
+    controller: App\Controller\MipanController::verTodosUsuarios
+
+app_mipan_editarTrabajadorAdmin:
+    path: /editarTrabajadorAdmin
+    controller: App\Controller\MipanController::editarTrabajadorAdmin
+
+app_mipan_borrarEmpleadoAdmin:
+    path: /borrarEmpleadoAdmin
+    controller: App\Controller\MipanController::borrarEmpleadoAdmin
+
+app_mipan_editarClienteAdmin:
+    path: /editarClienteAdmin
+    controller: App\Controller\MipanController::editarClienteAdmin
+
+app_mipan_borrarClienteAdmin:
+    path: /borrarClienteAdmin
+    controller: App\Controller\MipanController::borrarClienteAdmin
+
+app_mipan_buscarTrabajadorPorPanaderia:
+    path: /buscarTrabajadorPorPanaderia
+    controller: App\Controller\MipanController::buscarTrabajadorPorPanaderia
+
+app_mipan_buscarTrabajadorPorEspecialidad:
+    path: /buscarTrabajadorPorEspecialidad
+    controller: App\Controller\MipanController::buscarTrabajadorPorEspecialidad
+
+app_mipan_buscarClientePorCodigoPostal:
+    path: /buscarClientePorCodigoPostal
+    controller: App\Controller\MipanController::buscarClientePorCodigoPostal
+
+app_mipan_buscarClientePorUsuario:
+    path: /buscarClientePorUsuario
+    controller: App\Controller\MipanController::buscarClientePorUsuario
+
+
+
+
+
+
+
+
+
+
+
+
+
+app_mipan_registroJefes:
+    path: /registroJefes
+    controller: App\Controller\MipanController::registroJefes
+
+
+app_mipan_inicioJefes:
+    path: /inicioJefes
+    controller: App\Controller\MipanController::inicioJefes
+
+
+app_mipan_registroNuevaPanaderia:
+    path: /registroPanaderia
+    controller: App\Controller\MipanController::registroNuevaPanaderia
+
+app_mipan_confirmarRegistroNuevaPanaderia:
+    path: /confirmarRegistroNuevaPanaderia
+    controller: App\Controller\MipanController::confirmarRegistroNuevaPanaderia
+
+app_mipan_verPanaderiaJefes:
+    path: /verPanaderiaJefes
+    controller: App\Controller\MipanController::verPanaderia
+
+app_mipan_editarPanaderiasJefes:
+    path: /editarPanaderiasJefes
+    controller: App\Controller\MipanController::editarPanaderia
+
+
+
+app_mipan_productosJefes:
+    path: /productosJefes
+    controller: App\Controller\MipanController::listarProductos
+
+app_mipan_verProductosJefes:
+    path: /verProductosJefes
+    controller: App\Controller\MipanController::verProducto
+
+app_mipan_editarProductosJefes:
+    path: /editarProductosJefes
+    controller: App\Controller\MipanController::editarProducto
+
+app_mipan_insertarProductosJefes:
+    path: /insertarProductosJefes
+    controller: App\Controller\MipanController::insertarProductos
+
+app_mipan_borrarProductoJefes:
+    path: /borrarProductoJefes
+    controller: App\Controller\MipanController::borrarProductoJefes
+
+
+app_mipan_empleadosJefes:
+    path: /empleadosJefes
+    controller: App\Controller\MipanController::listarEmpleados
+
+app_mipan_verEmpleadoJefes:
+    path: /verEmpleadoJefes
+    controller: App\Controller\MipanController::verEmpleado
+
+app_mipan_editarEmpleadoJefes:
+    path: /editarEmpleadoJefes
+    controller: App\Controller\MipanController::editarEmpleado
+
+app_mipan_insertarEmpleadoJefes:
+    path: /insertarEmpleadoJefes
+    controller: App\Controller\MipanController::insertarEmpleado
+
+app_mipan_borrarEmpleadoJefes:
+    path: /borrarEmpleadoJefes
+    controller: App\Controller\MipanController::borrarEmpleadoJefes
+
+
+
+
+app_mipan_pedidosJefes:
+    path: /pedidosJefes
+    controller: App\Controller\MipanController::listarPedidos
+
+
+app_mipan_verPerfilJefes:
+    path: /verPerfilJefes
+    controller: App\Controller\MipanController::verPerfilJefes
+
+app_mipan_editarPerfilJefes:
+    path: /editarPerfilJefes
+    controller: App\Controller\MipanController::editarPerfilJefes
+
+
+
+
+
+app_mipan_inicioTrabajadorRepartidor:
+    path: /inicioRepartidor
+    controller: App\Controller\MipanController::inicioTrabajadoresRepartidor
+
+
+app_mipan_cambiarPedidoAEnCurso:
+    path: /cambiarPedidoAEnCurso
+    controller: App\Controller\MipanController::cambiarPedidoAEnCurso
+
+app_mipan_cambiarPedidoAPagado:
+    path: /cambiarPedidoAPagado
+    controller: App\Controller\MipanController::cambiarPedidoAPagado
+
+
+
+
+app_mipan_inicioTrabajadorDependiente:
+    path: /inicioDependiente
+    controller: App\Controller\MipanController::inicioTrabajadoresDependiente
+
+app_mipan_nuevoPedidoTienda:
+    path: /nuevoPedidoTienda
+    controller: App\Controller\MipanController::nuevoPedidoTienda
+
+
+
+app_mipan_inicioTrabajador:
+    path: /inicioTrabajador
+    controller: App\Controller\MipanController::inicioTrabajador
+
+
+
+
+
+
+
+
+
+
+
+
+app_mipan_cerrarSesionClientes:
+    path: /cerrarSesionClientes
+    controller: App\Controller\MipanController::cerrarSesionClientes
+
+app_mipan_registroClientes:
+    path: /registroClientes
+    controller: App\Controller\MipanController::registroClientes
+
+app_mipan_inicioClientes:
+    path: /inicioClientes
+    controller: App\Controller\MipanController::inicioClientes
+
+
+
+app_mipan_verCatalogoClientes:
+    path: /verCatalogoClientes
+    controller: App\Controller\MipanController::verCatalogo
+
+app_mipan_verProductosPanaderiaCatalogoClientes:
+    path: /verProductosPanaderiaCatalogoClientes
+    controller: App\Controller\MipanController::verProductosPanaderia
+
+app_mipan_seleccionProductosPanaderiaCatalogoClientes:
+    path: /seleccionProductosPanaderiaCatalogoClientes
+    controller: App\Controller\MipanController::seleccionProductosPanaderia
+
+
+app_mipan_nuevoPedidoOnlineClientes:
+    path: /nuevoPedidoOnlineClientes
+    controller: App\Controller\MipanController::nuevoPedidoOnline
+
+
+app_mipan_verPedidosClientes:
+    path: /verPedidosClientes
+    controller: App\Controller\MipanController::verPedidosClientes
+
+
+
+app_mipan_verCatalogoClientesC:
+    path: /verCatalogoClientesC
+    controller: App\Controller\MipanController::verCatalogoC
+
+
+app_mipan_verPerfilClientes:
+    path: /verPerfilClientes
+    controller: App\Controller\MipanController::verPerfilClientes
+
+app_mipan_editarPerfilClientes:
+    path: /editarPerfilClientes
+    controller: App\Controller\MipanController::editarPerfilClientes
+
+
+
+
+
+
+
+

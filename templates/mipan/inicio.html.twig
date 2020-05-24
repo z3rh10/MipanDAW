@@ -1,0 +1,227 @@
+{% extends 'mipan/layout.html.twig' %}
+
+{% block contenido %}
+<h3 style="color:red;" class="text-right">{{error}}</h3>
+<div id="consistesoftwarepanaderías">
+	<section id="title-enroll">
+		
+		<div class="jumbotron">
+			<div class="container-fluid p-2">     
+				<h2>¿En qué consiste un software para panaderías?</h2>
+				<br>
+				<b>
+					<p>El software para panaderías permite a las empresas automatizar los tediosos procesos manuales, por lo tanto elimina los errores humanos y conduce a una mejor experiencia del cliente en general.</p>
+
+					<p>Estos programas de panadería ayudan a gestionar el inventario, con todos los ingredientes y productos utilizados en una panadería.</p>
+					<br>
+					<p>Este software también proporciona una base de datos centralizada para la gestión de los clientes. De esta manera, los panaderos pueden pasar más tiempo asegurándose de que su producto es de primera clase y que sus clientes están teniendo una buena experiencia.</p>
+
+					<p>La mayoría de los sistemas de panadería están preparados para atender pedidos tanto en tienda como en un servicio de reparto. Incluyen la gestión de entregas puntuales y frecuentes registradas en un calendario.</p>
+				</b>
+			</div>
+		</div>
+	</section>
+</div>
+
+
+<hr>
+
+<div class="container">
+	<h1>Características del software para panaderías</h1>
+	<br>
+	<div class="row paragraph-row" id="Gestiondeingredientes">
+		<div class="col-xl-6 col-lg-6 col-md-12 top-paragraph">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="paragraph-title">Gestión de ingredientes</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<p class="paragraph-text">Almacena información detallada de los ingredientes, incluyendo cantidades y proporciones. También los costes para conocer el valor de cada producto y/o lote de productos. La gestión de los ingredientes ayuda a estandarizar el proceso de horneado para que las panaderías puedan lograr la consistencia deseada. Y al agregar información de costes, obtenemos los márgenes con los que trabajamos.</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-6 col-lg-6 col-md-12">
+			<div class="LazyLoad is-visible">
+				<img class="img-fluid home-bottom-img right-side-img" id="video-img" src="{{ asset('/img/gestionIngredientes.jpg') }}" alt="Gestión de ingredientes" title="Gestión de ingredientes">
+			</div>
+		</div>
+	</div>
+	<div class="row paragraph-row justify-content-center d-lg-none">
+		<div class="pg-lazy">
+		</div>
+	</div>
+	<div class="row paragraph-row">
+		<div class="col-xl-6 col-lg-6 col-md-12">
+			<div class="LazyLoad is-visible">
+				<img class="img-fluid home-bottom-img" id="tracing-img" src="{{ asset('/img/administracionInventario.jpg') }}" alt="Administración del inventario" title="Administración del inventario">
+			</div>
+		</div>
+		<div class="col-xl-6 col-lg-6 col-md-12" id="flip-div">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="paragraph-title ">Administración del inventario</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<p class="paragraph-text">Hace un seguimiento de entradas y salidas de productos permitiéndonos conocer en cualquier momento la cantidad con la que contamos. Cuadrar el inventario es crucial para cualquier panadería. Además, los módulos de inventario que se encuentran en el software para panaderías  incluyen un registro con información del proveedor y pedidos realizados.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row paragraph-row">
+		<div class="col-xl-6 col-lg-6 col-md-12 top-paragraph">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="paragraph-title">Gestión de pedidos</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<p class="paragraph-text">Centraliza todos los pedidos pendientes en una base de datos. Registra información crítica como detalles de pedidos e información sobre clientes y entregas.</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-6 col-lg-6 col-md-12">
+			<div class="LazyLoad is-visible">
+				<img class="img-fluid home-bottom-img right-side-img" id="video-img" src="{{ asset('/img/gestionPedidos.jpg') }}" alt="Gestión de pedidos" title="Gestión de pedidos">
+			</div>
+		</div>
+	</div>
+	<div class="row paragraph-row justify-content-center d-lg-none">
+		<div class="pg-lazy">
+		</div>
+	</div>
+	<div class="row paragraph-row" id="Programaciondelaproduccion">
+		<div class="col-xl-6 col-lg-6 col-md-12">
+			<div class="LazyLoad is-visible">
+				<img class="img-fluid home-bottom-img" id="tracing-img" src="{{ asset('/img/programacionProduccion.jpg') }}" alt="Programación de la producción" title="Programación de la producción">
+			</div>
+		</div>
+		<div class="col-xl-6 col-lg-6 col-md-12" id="flip-div">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="paragraph-title ">Programación de la producción</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<p class="paragraph-text">Establece un cronograma de cuándo deben completarse los procesos para garantizar que los productos horneados estén listos.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row paragraph-row">
+		<div class="col-xl-6 col-lg-6 col-md-12 top-paragraph">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="paragraph-title">Previsión</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<p class="paragraph-text">Reduce la sobrecompra para evitar pérdidas por el deterioro de alimentos.</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-6 col-lg-6 col-md-12">
+			<div class="LazyLoad is-visible">
+				<img class="img-fluid home-bottom-img right-side-img" id="video-img" src="{{ asset('/img/prevision.jpg') }}" alt="Previsión" title="Previsión">
+			</div>
+		</div>
+	</div>
+	<div class="row paragraph-row justify-content-center d-lg-none">
+		<div class="pg-lazy">
+		</div>
+	</div>
+	<div class="row paragraph-row">
+		<div class="col-xl-6 col-lg-6 col-md-12">
+			<div class="LazyLoad is-visible">
+				<img class="img-fluid home-bottom-img" id="tracing-img" src="{{ asset('/img/proveedor.jpg') }}" alt="Gestión de proveedores" title="Gestión de proveedores">
+			</div>
+		</div>
+		<div class="col-xl-6 col-lg-6 col-md-12" id="flip-div">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="paragraph-title ">Gestión de proveedores</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<p class="paragraph-text">Crea una base de datos centralizada para almacenar información sobre todos los proveedores a los que compramos los ingredientes.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row paragraph-row">
+		<div class="col-xl-6 col-lg-6 col-md-12 top-paragraph">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="paragraph-title">Punto de venta</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<p class="paragraph-text">Tramita todas las transacciones que lleves a cabo en tu panadería.</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-6 col-lg-6 col-md-12">
+			<div class="LazyLoad is-visible">
+				<img class="img-fluid home-bottom-img right-side-img" id="video-img" src="{{ asset('/img/puntoDeVenta.jpg') }}" alt="Punto de venta" title="Punto de venta">
+			</div>
+		</div>
+	</div>
+	<div class="row paragraph-row justify-content-center d-lg-none">
+		<div class="pg-lazy">
+		</div>
+	</div>
+	<div class="row paragraph-row">
+		<div class="col-xl-6 col-lg-6 col-md-12">
+			<div class="LazyLoad is-visible">
+				<img class="img-fluid home-bottom-img" id="tracing-img" src="{{ asset('/img/pedidosEnLinea.jpg') }}" alt="Pedidos en línea" title="Pedidos en línea">
+			</div>
+		</div>
+		<div class="col-xl-6 col-lg-6 col-md-12" id="flip-div">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="paragraph-title ">Pedidos en línea</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<p class="paragraph-text">Permite a los clientes realizar o encargar pedidos por internet con recogida en local o a domicilio. Puedes concretar las fechas y horas de entrega.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row paragraph-row">
+		<div class="col-xl-6 col-lg-6 col-md-12 top-paragraph">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="paragraph-title">Información nutricional</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<p class="paragraph-text">Registra la información nutricional de todos los ingredientes que contienen nuestros productos.</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-6 col-lg-6 col-md-12">
+			<div class="LazyLoad is-visible">
+				<img class="img-fluid home-bottom-img right-side-img" id="video-img" src="{{ asset('/img/infoNutricional.jpg') }}" alt="Información nutricional" title="Información nutricional">
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'mipan/inicioClientes.html.twig' %}
+
+{% block navegacion %}
+
+{% if app.session.get('Conectado') %}
+
+<div class="titles-clie">
+	<h2>Mi Perfil</h2>
+	<br>
+	<b>| <a href="{{ path('app_mipan_editarPerfilClientes', {'usuario': app.session.get('Conectado') }) }}">EDITAR DATOS DEL USUARIO</a></b>
+	<hr>
+	<br>
+	<h2>DNI</h2>
+	<h3>{{ perfil.dni }}</h3>
+	<hr>
+	<h2>Nombre y Apellidos</h2>
+	<h3>{{ perfil.nombre }} {{ perfil.apellidos }}</h3>
+	<hr>
+	<h2>Teléfono</h2>
+	<h3>{{ perfil.telefono }}</h3>
+	<hr>
+	<h2>Dirección</h2>
+	<h3>{{ perfil.direccion }}</h3>
+	<hr>
+	<h2>Código Postal</h2>
+	<h3>{{ perfil.codigoPostal }}</h3>
+	<hr>
+	<h2>Usuario</h2>
+	<h3>{{ perfil.usuario }}</h3>
+	<hr>
+
+</br>
+</div>
+
+{% else %}
+
+<br><br>
+<h1 style="color:red">Acceso Denegado</h1>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'mipan/layout.html.twig' %}
+
+{% block contenido %}
+
+{% if app.session.get('Conectado') %}
+
+<div class="container">
+	<h2>PARA EMPEZAR A GESTIONAR TU PANADERIA, PRIMERO DEBES REGISTRARLA</h2>
+
+	<hr>
+	<form action="/confirmarRegistroNuevaPanaderia" method="POST">
+
+		<div class="form-group">
+			<input name="usuActivo" type="hidden" class="form-control" id="inputUsuActivo" value="{{ app.session.get('Conectado') }}" required>
+
+		</div>
+
+		<div class="form-group">
+			<label for="inputNombre"><strong>Nombre</strong></label>
+			<input name="nombreP" type="text" class="form-control" id="inputNombre" placeholder="Escribe el nombre de la panaderia" required>
+
+		</div>
+
+		<div class="form-group">
+			<label for="inputLogo"><strong>Logo</strong></label>
+			<input name="logoP" type="file" class="form-control" id="inputLogo" placeholder="Selecciona la imagen" required>
+
+		</div>
+
+		
+
+		<div class="form-group">
+			<label for="inputTelefono"><strong>Teléfono</strong></label>
+			<input name="telefonoP" type="number" class="form-control" id="inputTelefono" placeholder="Escribe el número de contacto" required>
+
+		</div>
+
+		<div class="form-group">
+			<label for="inputCodigoPostal"><strong>Código Postal</strong></label>
+			<input name="codigoPostalP" type="number" class="form-control" id="inputCodigoPostal" placeholder="Escribe el Código Postal" required>
+
+		</div>
+
+		<div class="form-group">
+			<label for="inputDireccion"><strong>Dirección</strong></label>
+			<input  name="direccionP" type="text" class="form-control" id="inputDireccion" placeholder="Escribe la dirección del local | P.ej: C/Moral 12, Av. de Málaga, 24, 11650 Villamartin, Cádiz" required>
+
+		</div>
+
+		<div class="form-group">
+			<label for="inputUbicacion"><strong>Ubicación (Opcional)</strong></label>
+			<br>
+			<label><i>Nota: Ayuda a facilitar la búsqueda de tu local</i></label>
+			<input  name="ubicacionP" type="text" class="form-control" id="inputUbicacion" placeholder="Escribe el enlace de la ubicación en Google Maps | P.ej: https://goo.gl/maps/4FiSGWKMjccMa8f69">
+
+		</div>
+
+		<div class="form-group">
+			<label for="inputHorario"><strong>Horario</strong></label>
+			<input  name="horarioP" type="text" class="form-control" id="inputHorario" placeholder="Escribe los horarios de apertura" required>
+
+		</div>
+
+		
+		<hr>
+		<div class="form-group form-check">
+			<input type="checkbox" class="form-check-input" id="aceptar" required>
+			<label name="checkN" class="form-check-label"><a href="" data-toggle="modal" data-target="#confidencialidad">Acepto las condiciones y políticas de Privacidad</a></label>
+		</div>
+		<button type="submit" class="btn btn-success ">Completar registro</button>
+
+	</form>
+
+</div>
+
+{% else %}
+
+<h3 style="color:red;" class="text-right">Acceso Denegado</h3>
+
+{% endif %}
+
+{% endblock %}

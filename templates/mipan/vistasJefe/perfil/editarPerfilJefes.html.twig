@@ -1,0 +1,61 @@
+{% extends 'mipan/inicioJefes.html.twig' %}
+
+{% block gestion %}
+
+{% if app.session.get('Conectado') %}
+
+<h2>Editar Datos del Usuario</h2>
+
+<br>
+<h3 style="color:red;" class="text-right">{{mensaje}}</h3>
+
+<form name="formEditar" action="" method="POST">
+	<table>
+
+		<tr>
+			<td>DNI</td>
+			<td><input type="text" name="dni" value="{{ perfil.dni }}" required readonly /></td>
+		</tr> 
+		<tr>
+			<td>Nombre</td>
+			<td><input type="text" name="nombre" value="{{ perfil.nombre }}" required /></td>
+		</tr> 
+		<tr>
+			<td>Apellidos</td>
+			<td><input type="text" name="apellidos" value="{{ perfil.apellidos }}" required /></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><input type="email" name="email" value="{{ perfil.email }}" required /></td>
+		</tr>
+		<tr>
+		<tr>            
+			<td>Telefono</td>
+			<td><input type="number" name="telefono" value="{{ perfil.telefono }}" required /></td> 
+		</tr>
+		<hr>
+		<tr>            
+			<td>Usuario</td>
+			<td><input type="text" name="usuario" value="{{ perfil.usuario }}" required readonly /></td> 
+		</tr>
+		<tr>            
+			<td>Contraseña</td>
+			<td><input type="password" name="pass" value="{{ perfil.pass }}" required /></td> 
+		</tr>
+
+
+		</table>
+		<input type="submit" value="Editar" name="editar" />
+	</form>
+
+	{% else %}
+
+	<br><br>
+	<h1 style="color:red">Acceso Denegado a la función: 'Editar'</h1>
+
+	{% endif %}
+
+
+
+	{% endblock %}
+

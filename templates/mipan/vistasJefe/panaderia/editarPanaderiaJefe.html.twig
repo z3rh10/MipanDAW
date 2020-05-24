@@ -1,0 +1,62 @@
+{% extends 'mipan/inicioJefes.html.twig' %}
+
+{% block gestion %}
+
+{% if app.session.get('Conectado') %}
+
+<h2>Editar Datos Panaderia</h2>
+
+<br>
+<h3 style="color:red;" class="text-right">{{mensaje}}</h3>
+
+<form name="formEditar" action="" method="POST">
+	<table>
+
+		<tr>
+			<td>Nombre</td>
+			<td><input type="text" name="nombre" value="{{ panaderia.nombre }}" required readonly /></td>
+		</tr>
+		<tr>
+			<td>Codigo Postal</td>
+			<td><input type="text" name="codigoPostal" value="{{ panaderia.codigoPostal }}" required /></td>
+		</tr>  
+		<tr>
+			<td>Imagen</td>
+			<td><input type="file" name="logo" value="{{ panaderia.logo }}" required /></td>
+		</tr>
+		<tr>            
+			<td>Telefono de Contacto</td>
+			<td><input type="number" name="telefono" value="{{ panaderia.telefono }}" required /></td> 
+		</tr>
+		<tr>
+			<td>Dirección</td>
+			<td><input type="text" name="direccion" value="{{ panaderia.direccion }}" required /></td> 
+		</tr>
+		<tr>
+			<td>Ubicación Google Maps</td>
+			<td>
+				<textarea rows="4" cols="50" name="ubicacion" required>{{ panaderia.ubicacion }}</textarea>
+			</td> 
+		</tr>
+		<tr>
+			<td>Horarios</td>
+			<td><textarea rows="4" cols="50" name="horario" required>{{ panaderia.horario }}</textarea></td> 
+		</tr>
+
+
+
+	</table>
+	<input type="submit" value="Editar" name="editar" />
+</form>
+
+{% else %}
+
+<br><br>
+<h1 style="color:red">Acceso Denegado a la función: 'Editar'</h1>
+
+{% endif %}
+
+
+
+{% endblock %}
+

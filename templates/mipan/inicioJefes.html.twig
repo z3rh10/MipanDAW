@@ -1,0 +1,69 @@
+{% extends 'mipan/layout.html.twig' %}
+
+{% block contenido %}
+
+{% if app.session.get('Conectado') %}
+
+<div id="page-top">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+		<a class="navbar-brand js-scroll-trigger" href="#page-top">
+			<span class="d-block d-lg-none"></span>
+			<span class="d-none d-lg-block"></span>
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<h2>GESTIÓN</h2>
+				</li>
+				<li class="nav-item">
+					<h4 class="nomUsu2">PANADERIA: {{ app.session.get('Panaderia') }}</a></h4>
+					<h4 class="nomUsu2">-{{ app.session.get('Conectado') }}-</a></h4>
+					<a class="nav-link js-scroll-trigger" href="{{ path('app_mipan_verPerfilJefes', {'usuario': app.session.get('Conectado')}) }}">Mi Perfil</a>
+				</li>
+				<li class="nav-item">
+					<hr>
+				</li>
+				
+				
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="/productosJefes">Productos</a>
+				</li>
+			
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="{{ path('app_mipan_verPanaderiaJefes', {'nombre': app.session.get('Panaderia')}) }}">Panaderia</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="/empleadosJefes">Empleados</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="/pedidosJefes">Pedidos</a>
+				</li>
+				<li class="nav-item">
+					<hr>
+					<a class="nav-link js-scroll-trigger" href="/cerrarSesion">Cerrar sesión</a>
+				</li>
+
+			</ul>
+		</div>
+	</nav>
+
+</div>
+
+<div>
+	<br>
+</div>
+
+{% block gestion %}
+
+{% endblock %}
+
+{% else %}
+
+<h3 style="color:red;" class="text-right">Aceso Denegado</h3>
+
+{% endif %}
+
+{% endblock %}

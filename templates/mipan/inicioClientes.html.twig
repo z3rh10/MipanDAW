@@ -1,0 +1,65 @@
+{% extends 'mipan/layout2.html.twig' %}
+
+{% block contenido %}
+
+{% if app.session.get('Conectado') %}
+
+<div id="page-top">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+		<a class="navbar-brand js-scroll-trigger" href="#page-top">
+			<span class="d-block d-lg-none"></span>
+			<span class="d-none d-lg-block"></span>
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<h2>MENU</h2>
+				</li>
+				<li class="nav-item">
+					<h4 class="nomUsu2">-{{ app.session.get('Conectado') }}-</a></h4>
+					<a class="nav-link js-scroll-trigger" href="{{ path('app_mipan_verPerfilClientes', {'usuario': app.session.get('Conectado') }) }}">Mi Perfil</a>
+				</li>
+				<li class="nav-item">
+					<hr>
+				</li>
+				
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger"
+					href="{{ path('app_mipan_verCatalogoClientes', {'usuarioActivo': app.session.get('Conectado') }) }}">Catálogo</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="{{ path('app_mipan_verCatalogoClientesC', {'usuarioActivo': app.session.get('Conectado') }) }}">Carrito</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="{{ path('app_mipan_verPedidosClientes') }}">Pedidos</a>
+				</li>
+				<li class="nav-item">
+					<hr>
+					<a class="nav-link js-scroll-trigger" href="/cerrarSesionClientes">Cerrar sesión</a>
+				</li>
+				
+
+			</ul>
+		</div>
+	</nav>
+
+</div>
+
+<div>
+	<br>
+</div>
+
+{% block navegacion %}
+
+{% endblock %}
+
+{% else %}
+
+<h3 style="color:red;" class="text-right">Aceso Denegado</h3>
+
+{% endif %}
+
+{% endblock %}

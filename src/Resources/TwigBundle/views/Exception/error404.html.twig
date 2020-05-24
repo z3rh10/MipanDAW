@@ -1,0 +1,16 @@
+{# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Página no encontrada</h1>
+
+    {# ejemplo de parte de la página que sólo se muestra a usuario identificado #}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {# ... #}
+    {% endif %}
+
+    <p>
+        No se ha podido localizar la página solicitada. Comprueba cualquier error
+        escribiendo la URL o <a href="{{ path('app_mipan_inicio') }}">vuelve al inicio</a>.
+    </p>
+{% endblock %}

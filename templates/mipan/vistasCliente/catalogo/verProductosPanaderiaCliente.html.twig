@@ -1,0 +1,97 @@
+{% extends 'mipan/inicioClientes.html.twig' %}
+
+{% block navegacion %}
+
+{% if app.session.get('Conectado') %}
+
+<div class="container">
+	
+	{% for producto in productos|slice(0, 1) %}
+	<h1 class="titles-clie">Panaderia {{ producto.panaderia }}</h1>
+	{% endfor %}
+
+	<h2 class="titles-clie">PRODUCTOS</h2>
+
+	<div>
+		<hr>
+		
+		<div class="btn-group btn-group-toggle" data-toggle="buttons">
+			
+			<label class="btn btn-dark active">
+				<input type="radio" name="options" id="vista" autocomplete="off" checked> <u>Visualización</u>
+			</label>
+
+			{% for producto in productos|slice(0, 1) %}
+			<label class="btn btn-primary" onclick="javascript:location.href=' {{ path('app_mipan_seleccionProductosPanaderiaCatalogoClientes', {'panaderia': producto.panaderia}) }} '">
+				<input type="radio" name="options" id="compra" autocomplete="off" > Compra
+			</label>
+			{% endfor %}
+			
+
+		</div>
+
+		
+		<br>
+		<b class="ml-4"><b class="ml-5"><b class="ml-5 ">| Cambiar a Compra</b></b></b>
+		<br><br>
+		<i class="material-icons titles-clie">remove_red_eye</i><i> Modo Visualización </i> 
+
+		<hr>
+	</div>
+
+	<div class="container">
+
+		<section class="p-0 mb-5" id="portfolio">
+			<div class="container-fluid p-0">
+				<div class="row no-gutters popup-gallery">
+
+					{% for producto in productos %}
+
+					<div class="col-lg-4 col-sm-6 p-2" id="listaProductos">
+						<img class="img-fluid" src="/img/productos/{{ producto.imagen }}" alt="" style="height: 195px;">
+						<div class="portfolio-box-caption">
+							<div class="portfolio-box-caption-content">
+								<div class="project-category text-faded">
+									<h3 class="titles-clie pt-2 text-center">{{ producto.nombre }}</h3>
+								</div>
+								<div class="project-name">
+
+								</div>
+							</div>
+						</div>
+					</a>
+					<h2 class="titles-clie text-right"> {{ producto.precio }} € </h2>
+					<p class="text-right"><b >x Unidad</b></p>
+					<p class="text-center">
+						<a class="btn btn-secondary" data-toggle="collapse" href="#collapseExample{{ producto.id }}" role="button" aria-expanded="false" aria-controls="collapseExample{{ producto.id }}">
+							Descripción
+						</a>
+					</p>
+					<div class="collapse" id="collapseExample{{ producto.id }}">
+						<div class="card card-body">
+							<h5 class="titles-clie">{{ producto.descripcion }}</h5>
+						</div>
+					</div>
+					
+				</div>
+
+				{% endfor %}
+
+			</div>
+		</div>
+	</section>
+
+</div>
+
+
+
+
+</div>
+
+{% else %}
+
+<h3 style="color:red;" class="text-right">Aceso Denegado</h3>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,190 @@
+{% extends 'mipan/inicioClientes.html.twig' %}
+
+{% block navegacion %}
+
+{% if app.session.get('Conectado') %}
+
+<div class="container">
+
+	<h2 class="titles-clie">PANADERIAS DISPONIBLES CERCANAS A TI</h2>
+	<hr>
+</div>
+
+<section class="carousel slide" data-ride="carousel" id="postsCarousel">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center mb-4">
+				<a class="btn btn-outline-secondary prev mr-1" href="" title="go back"><i class="fa fa-lg fa-chevron-left"></i></a>
+				<a class="btn btn-outline-secondary next ml-1" href="" title="more"><i class="fa fa-lg fa-chevron-right"></i></a>
+			</div>
+		</div>
+	</div>
+
+	<!-- CONDICIONES Y VARIABLES -->
+	{% set contadorPanaderias = 0 %}
+	{% set totalPanaderias = 0 %}
+
+	{% set contadorPanaderias2 = 0 %}
+	{% set totalPanaderias2 = 0 %}
+	<!-- Grupo de Indices: 1,2,3 | 4,5,6 | 7,8,9 -->
+	
+	
+	<!-- ....................... -->
+
+	<div class="container p-t-0 m-t-2 carousel-inner">
+
+		
+
+		<div class="row row-equal carousel-item active m-t-0">
+
+			
+			{% for panaderia in panaderias|slice(0, 3) %}
+			{% set contadorPanaderias = contadorPanaderias + 1 %}
+
+			<div class="col-md-4">
+				<b>{{ contadorPanaderias }}</b>
+				<div class="card">
+					<div class="card-img-top card-img-top-250">
+						<img src="/img/panaderias/{{ panaderia.logo }}" class="card-img-top" alt="{{ panaderia.logo }}">
+					</div>
+
+					<div class="card-body">
+						<h2 class="titles-clie card-title text-center">{{ panaderia.nombre }}</h2>
+						<p class="card-text">
+
+							<hr>
+							<b class="titles-clie">Código Postal: {{ panaderia.codigoPostal }}</b>
+							<br>
+							<b class="titles-clie">Dirección:</b>
+							<br>
+							<b class="titles-clie" style="font-size: 12px;">- {{ panaderia.direccion }}</b>
+							<br>
+							<b class="titles-clie">Teléfono de Contacto:</b>
+							<br>
+							<b class="titles-clie" style="font-size: 12px;">- {{ panaderia.telefono }}</b>
+							<br>
+							<b class="titles-clie">Horarios:</b>
+							<br>
+							<b class="titles-clie ml-4" style="font-size: 12px;">- {{ panaderia.horario }}</b>
+							<br><br>
+							<div>
+								<iframe src="{{ panaderia.ubicacion }}" width="100%" height="200px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+								</iframe>
+							</div>
+						</p>
+						<a href="{{ path('app_mipan_verProductosPanaderiaCatalogoClientes', {'panaderia': panaderia.nombre}) }}" class="btn btn-primary ml-5">Ver Productos</a>
+					</div>
+				</div>
+			</div>
+
+			{% else %}
+			<p>No hay panaderias disponibles.</p>
+			{% endfor %}
+
+		</div>
+
+		
+
+		<!--  -->
+
+		{% for panaderia in panaderias %}
+
+		{% set  contadorPanaderias2 =  contadorPanaderias2 + 1 %}
+		
+		{% endfor %}
+		{% set totalPanaderias2 = contadorPanaderias2 %}
+		
+		{% if (totalPanaderias2/3) <= 1 %}
+		{% set nCards = 1  %}
+		{% elseif (totalPanaderias2/3) > 1 %}
+		{% set nCards = ( totalPanaderias2/3 ) + 1 | round  %}
+		{% elseif (totalPanaderias2/3) - ((totalPanaderias2/3)|number_format(0, '.', ',')) >= 0.5 %}
+		{% set nCards = ( totalPanaderias2/3 ) + 1 | round  %}
+		{% endif %}
+
+		{% set contNCards = 0 %}
+		{% for i in 1..nCards %}
+
+
+		{% set contNCards = contNCards + 1 %}
+
+
+		<div class="row row-equal carousel-item m-t-0">	
+
+
+
+			<!-- nCards = 2 -->
+			{% set pos1 = contNCards + nCards  - 1%}
+			{% set pos2 = pos1 + 3 %}
+
+			{% set subCont = 1 %}
+
+			{% for panaderia in panaderias|slice(pos1, pos2) %}
+
+			{% if subCont <= 3 %}
+			
+
+			<div class="col-md-4 pb-5">
+				<b>{{ contNCards }}</b>
+				<div class="card">
+					<div class="card-img-top card-img-top-250">
+						<img src="/img/panaderias/{{ panaderia.logo }}" class="card-img-top" alt="{{ panaderia.logo }}">
+					</div>
+
+					<div class="card-body">
+						<h2 class="titles-clie card-title text-center">{{ panaderia.nombre }}</h2>
+						<p class="card-text">
+
+							<hr>
+							<b class="titles-clie">Código Postal: {{ panaderia.codigoPostal }}</b>
+							<br>
+							<b class="titles-clie">Dirección:</b>
+							<br>
+							<b class="titles-clie" style="font-size: 12px;">- {{ panaderia.direccion }}</b>
+							<br>
+							<b class="titles-clie">Teléfono de Contacto:</b>
+							<br>
+							<b class="titles-clie" style="font-size: 12px;">- {{ panaderia.telefono }}</b>
+							<br>
+							<b class="titles-clie">Horarios:</b>
+							<br>
+							<b class="titles-clie ml-4" style="font-size: 12px;">- {{ panaderia.horario }}</b>
+							<br><br>
+							<iframe src="{{ panaderia.ubicacion }}" width="280" height="220" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+						</p>
+						<a href="{{ path('app_mipan_verProductosPanaderiaCatalogoClientes', {'panaderia': panaderia.nombre}) }}" class="btn btn-primary ml-5">Ver Productos</a>
+					</div>
+				</div>
+
+			</div>
+
+			{% endif %}
+
+			{% set subCont = subCont + 1 %}
+			{% endfor %}
+			
+			
+		</div>
+
+		{% endfor %}
+
+
+	</div>
+</section>
+
+<!--  -->
+
+{% else %}
+
+<h3 style="color:red;" class="text-right">Aceso Denegado</h3>
+
+{% endif %}
+
+
+
+
+
+
+{% endblock %}
+

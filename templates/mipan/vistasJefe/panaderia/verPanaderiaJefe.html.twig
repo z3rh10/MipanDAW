@@ -1,0 +1,33 @@
+{% extends 'mipan/inicioJefes.html.twig' %}
+
+{% block gestion %}
+
+<h2>Datos de la Panaderia</h2>
+<br>
+<b>| <a href="{{ path('app_mipan_editarPanaderiasJefes', {'nombre': panaderia.nombre}) }}">EDITAR DATOS DE LA PANADERIA</a></b>
+<hr>
+<h3><img src="/img/panaderias/{{ panaderia.logo }}" style="width:400px; height:9em;"></h3>
+<br>
+<h2>Nombre</h2>
+<h3>{{ panaderia.nombre }}</h3>
+<hr>
+<h2>Teléfono de Contacto</h2>
+<h3>{{ panaderia.telefono }}</h3>
+<hr>
+<h2>Código Postal</h2>
+<h3>{{ panaderia.codigoPostal }}</h3>
+<hr>
+<h2>Dirección del Local</h2>
+<h3>{{ panaderia.direccion }}</h3>
+<hr>
+<h2>Ubicación</h2>
+<h3>{{ panaderia.ubicacion }}</h3>
+<hr>
+<h2>Horarios</h2>
+<h3>{{ panaderia.horario }}</h3>
+
+
+
+</br>
+
+{% endblock %}
