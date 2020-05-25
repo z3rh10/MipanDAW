@@ -27,7 +27,8 @@
         "symfony/twig-pack": "*",
         "symfony/validator": "5.0.*",
         "symfony/web-link": "5.0.*",
-        "symfony/yaml": "5.0.*"
+        "symfony/yaml": "5.0.*",
+        "symfony/web-profile-bundle": "*"
         
     },
     "require-dev": {
@@ -44,8 +45,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/",
-            "App\\Bundle\\WebProfilerBundle\\": ""
+            "App\\": "src/"
+            
         }
     },
     "autoload-dev": {
