@@ -39,6 +39,13 @@ class MipanController extends AbstractController
 			'error' => ''		
 		);
 
+		$sesion = $this->container->get('session');
+
+		$sesion->set('Conectado', null);
+		$sesion->set('Panaderia', null);
+
+		$sesion->invalidate();
+
 		// $reply= confirm("¿Seguro que desea salir?");
 		// if ($reply==true){
 		// 	echo "asd";
