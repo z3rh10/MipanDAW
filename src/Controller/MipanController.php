@@ -127,6 +127,8 @@ class MipanController extends AbstractController
 
 				$m2->actualizaCampoPanaderiaDeJefe($nombreP, $usuActivo);
 
+				
+
 			} else {
 				$error = 'Ya está registrada.';
 			}
