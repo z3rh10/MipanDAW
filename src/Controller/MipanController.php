@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use App\Model\Model;
 use App\Config\Config;
-use App\Bundle\WebProfilerBundle\WebProfilerBundle;
+use App\Bundle\WebProfilerBundle;
 use Unirest\Request;
 
 
