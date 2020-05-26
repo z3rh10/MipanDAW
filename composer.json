@@ -51,6 +51,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "Symfony\\Bundle\\WebProfilerBundle\\": "src/Bundle/WebProfilerBundle/",
             "App\\Tests\\": "tests/"
         }
     },
