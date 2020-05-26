@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace App\Bundle\;
+namespace Symfony\Bundle\WebProfilerBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
